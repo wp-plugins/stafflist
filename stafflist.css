@@ -1,0 +1,225 @@
+body {
+	/* background-color:gold; */
+}
+#staffdirectory {
+	width:840px;
+	overflow:auto;
+	padding:8px;
+	background-color: #FBFBFB;
+	border:1px solid #E8E8E8;
+	margin-top:20px;
+	
+	-webkit-box-shadow: 0 0 8px rgba(0,0,0, .05);
+	-moz-box-shadow: 	0 0 8px rgba(0,0,0, .05);
+	box-shadow: 		0 0 8px rgba(0,0,0, .05);
+}
+*{
+	margin:0;
+	padding:0;
+	font-family: "Lucida Grande", Arial, sans-serif;
+}
+#stafflists td {
+	font-size: 12px;
+	color: #555;
+}
+#stafflists p {
+	overflow:hidden;
+	margin: 5px 0;
+	float:left;
+	font-weight:bold;
+	clear: left;
+	height
+}
+#stafflists a {
+	color: #555;
+}
+#stafflists a:hover, #stafflists strong {
+	color: #B74327;
+	text-decoration: none;
+	border-bottom: 1px #B74327 dotted;
+}
+#stafflists {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+}
+#stafflists tr.info td {
+	padding: 5px;
+	font-size: 11px;
+}
+
+tr:nth-child(2n+1){
+  background-color: #f0f0f0;
+}
+
+#stafflisthead tr, #stafflisthead tr th {
+	height: 20px;
+	background-color: #cfcfcf;
+	font-weight: bold;
+	padding:0;
+	font-size: 12px;
+}
+.sort_a, .sort_d {
+	width: 9px;
+	height: 9px;
+	display: inline-block;
+	margin: 0 2px;
+}
+.sort_a span, .sort_d span {
+	display: none;
+}
+.sort_a {
+	background-position: 9px 0;
+}
+.sort_d {
+	background-position: 9px 9px;
+}
+.sort_a.selected {
+	background-position: 0 0;
+}
+.sort_d.selected {
+	background-position: 0 9px;
+}
+	.sort_a:hover {
+	background-position: 18px 0;
+}
+.sort_d:hover {
+	background-position: 18px 9px;
+}
+.thumb {
+	height:45px;
+	width:60px;
+	overflow:hidden;
+	margin-right:10px;
+}
+#status {
+	width:50%;
+	padding:10px;
+	outline:none;
+	height:36px;
+}
+#pagerblock {
+	margin-bottom:6px;
+}
+.pager {
+	width:18px;
+	height:14px;
+	background-color:#DDD;
+	border:1px solid #AAA;
+	display:block;
+	text-decoration: none;
+	text-align:center;
+	float:left;
+	margin: 0 3px;
+	padding:0 0 5px 0;
+}
+.pager a {
+	text-decoration:none;
+	color: #888;
+	font-weight: normal;
+}
+.pager a:hover {
+	color: #B74327
+}
+.editbutton {
+	width: auto !important;
+	margin: 0 4px !important;
+	float:right !important;
+	padding: 0 4px;
+	clear: none;
+	height:14px;
+	background-color:#DDD;
+	border:1px solid #AAA;
+	display:block;
+	text-decoration: none;
+	margin: 0 3px;
+}
+.editbutton a {
+	text-decoration:none;
+}
+.editbutton a:hover {
+	font-weight:bold;
+}
+.editmaster {
+	border:1px solid black;
+}
+.copyAcross {
+	margin-top:10px;
+}
+tr.row {
+	height: 70px;
+}
+tr.orange, #warning.orange {
+	background: #ffe4db;
+}
+#warning {
+	padding: 10px;
+	margin-bottom: 10px;
+}
+.focusField {
+	padding-left: 20px;
+	width: 200px;
+	border:solid 2px #73A6FF;
+	background:#EFF5FF;
+	color:#000;
+}
+.idleField {
+	padding-left: 20px;
+	width: 200px;
+	background:#EEE;
+	color: #6F6F6F;
+	border: solid 2px #DFDFDF;
+}
+#donate {
+	float:right;
+	width:180px;
+	height:170px;
+	border:1px solid #B74327;
+	margin:10px;
+	padding:20px 10px 10px 10px;
+}
+.sort_a {
+	background-image: url(sort.gif);
+}
+.sort_d {
+	background-image: url(sort.gif);
+}
+.upd {
+	margin:0;
+	padding:0;
+	float:left;
+	width:16px;
+	height:16px;
+}
+.updA {
+	background-image: url(updating.gif);
+	margin:0;
+	padding:0;
+	float:left;
+	width:16px;
+	height:16px;
+}
+.focusField {
+	background: url(edit.png) no-repeat 2px 2px;
+}
+.idleField {
+	background: url(okay.png) no-repeat 2px 2px;
+}
+.updateField {
+	padding-left: 20px;
+	 width: 200px;
+	background: url(updating.gif) no-repeat 2px 2px;
+}
+#doInsert {
+	background: url(copyacross.gif) no-repeat;
+	width:25px;
+	height:25px;
+	margin:4px;
+	padding:12px 13px 12px 12px;
+}
+.contactcard {
+	background: url(contact_card.gif) no-repeat;
+	width:25px;
+	height:25px;
+	margin:4px;
+}
