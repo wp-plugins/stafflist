@@ -3,7 +3,7 @@
 Plugin Name: StaffList
 Plugin URI: http://URI_Of_Page_Describing_Plugin_and_Updates
 Description: A super simplified staff directory tool
-Version: 0.9
+Version: 0.91
 Author: era404 Creative Group, Inc.
 Author URI: http://www.era404.com
 License: GPLv2 or later.
@@ -323,7 +323,7 @@ function ajax_build_header($limit) {
 				<input type='hidden' id='sl_page' value='1'>
 				Search Directory: <input type='test' id='sl_search' value='{$limit['search']}' onkeyup='do_sl_search(this);'>
 		  	</form></div>
-		Page: {$limit['page'][3]} (".($limit['page'][4]+1)." - ".($limit['page'][5]+1)." of {$limit['page'][0]}) ";
+		Page: {$limit['page'][3]} (".($limit['page'][4]+1)." - ".($limit['page'][0]<($limit['page'][5]+1)?$limit['page'][0]:($limit['page'][5]+1))." of {$limit['page'][0]}) ";
 		for($page=1;$page<=$limit['page'][2];$page++){ echo "<p class='pager'><a href='javascript:sl_page({$page});' id='sl_page:{$page}'>{$page}</a></p>"; }
 	echo "</div>";
 	echo "";

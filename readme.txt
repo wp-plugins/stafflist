@@ -30,12 +30,13 @@ This plugin doesn't bother with custom columns, initial-sort, skinning parameter
 1. Install StaffList either via the WordPress.org plugin directory, or by uploading the files to your server (in the `/wp-content/plugins/` directory).
 1. Activate the plugin.
 1. Create a staff record (or as many as you need)
-1. Insert the staff directory into your page template with <?php new stafflist(); ?>
+1. Insert the staff directory into your page template with &lt;?php new stafflist(); ?&gt;
 
 == Screenshots ==
 
 1. The frontend staff directory
 2. The backend directory manager
+3. Example of a directory search
 
 == Frequently Asked Questions ==
 
@@ -46,6 +47,9 @@ Yes. We plan to add a feature to use infinite scroll instead of page numbers.
 If you wish. Sure.
 
 == Changelog ==
+
+= 0.91 =
+* Added a new screenshot to show the regex search results
 
 = 0.9 =
 * Plugin-out only in beta, currently. Standby for official release.
