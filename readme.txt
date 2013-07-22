@@ -48,6 +48,9 @@ If you wish. Sure.
 
 == Changelog ==
 
+= 0.92 =
+* Added a banner image.
+
 = 0.91 =
 * Added a new screenshot to show the regex search results
 
