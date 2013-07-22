@@ -1,14 +1,18 @@
 body {
 	/* background-color:gold; */
 }
+#staffwrapper {
+	position: relative;
+	width: 858px;
+}
+
 #staffdirectory {
-	width:840px;
 	overflow:auto;
 	padding:8px;
 	background-color: #FBFBFB;
 	border:1px solid #E8E8E8;
 	margin-top:20px;
-	
+	min-height: 20px;
 	-webkit-box-shadow: 0 0 8px rgba(0,0,0, .05);
 	-moz-box-shadow: 	0 0 8px rgba(0,0,0, .05);
 	box-shadow: 		0 0 8px rgba(0,0,0, .05);
@@ -18,9 +22,17 @@ body {
 	padding:0;
 	font-family: "Lucida Grande", Arial, sans-serif;
 }
+#stafflists {
+	margin-bottom: 10px;
+}
+#stafflists tr {
+	border: 1px solid #FFF;
+	border-bottom: 1px solid #f0f0f0;
+}
 #stafflists td {
 	font-size: 12px;
 	color: #555;
+	border: 0;
 }
 #stafflists p {
 	overflow:hidden;
@@ -33,7 +45,7 @@ body {
 #stafflists a {
 	color: #555;
 }
-#stafflists a:hover, #stafflists strong {
+#stafflists tbody a:hover, #stafflists strong {
 	color: #B74327;
 	text-decoration: none;
 	border-bottom: 1px #B74327 dotted;
@@ -53,11 +65,14 @@ tr:nth-child(2n+1){
 }
 
 #stafflisthead tr, #stafflisthead tr th {
-	height: 20px;
+	height: 30px;
 	background-color: #cfcfcf;
 	font-weight: bold;
 	padding:0;
 	font-size: 12px;
+}
+#stafflisthead tr th {
+	padding-left: 5px;
 }
 .sort_a, .sort_d {
 	width: 9px;
@@ -99,27 +114,45 @@ tr:nth-child(2n+1){
 	height:36px;
 }
 #pagerblock {
-	margin-bottom:6px;
+	position: absolute;
+	right: 0;
+	margin: 10px 10px 0 0;
+}
+#sl_search {
+	outline: none;
 }
 .pager {
 	width:18px;
 	height:14px;
 	background-color:#DDD;
-	border:1px solid #AAA;
 	display:block;
 	text-decoration: none;
 	text-align:center;
 	float:left;
-	margin: 0 3px;
+	margin: 0 2px 0 0;
 	padding:0 0 5px 0;
+}
+.pageNum {
+	padding-left: 10px;
+	display: inline-block;
 }
 .pager a {
 	text-decoration:none;
 	color: #888;
 	font-weight: normal;
+	padding-right: 2px;
 }
-.pager a:hover {
-	color: #B74327
+p.current{
+	background: #B74327;
+}
+p.current a, p.current a:hover{
+	color: #FFF;
+}
+p.pager:hover{
+	background-color: #888;
+}
+p.pager:hover a{
+	color: #FFF;
 }
 .editbutton {
 	width: auto !important;

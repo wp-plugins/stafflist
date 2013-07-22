@@ -48,6 +48,9 @@ If you wish. Sure.
 
 == Changelog ==
 
+= 0.93 =
+* Improved styles.
+
 = 0.92 =
 * Added a banner image.
 

@@ -11,8 +11,6 @@ function build_stafflist() {
  	jQuery.post(ajax_object.ajaxurl, data, function(response) {
  		//console.log(response);
 		jQuery("div#staffdirectory").html(response);
-		jQuery("#sl_search").focus();
-		jQuery("#sl_search").setCursorToTextEnd();
  	});
  	return false;
 }
@@ -49,16 +47,6 @@ function refine_stafflist(){
 	};
  	jQuery.post(ajax_object.ajaxurl, data, function(response) {
 		jQuery("div#staffdirectory").html(response);
-		jQuery("#sl_search").focus();
-		jQuery("#sl_search").setCursorToTextEnd();
  	});
  	return false;
 }
-
-(function(jQuery){
-	jQuery.fn.setCursorToTextEnd = function() {
-        $initialVal = this.val();
-        this.val('');
-        this.val($initialVal);
-    };
-})(jQuery);

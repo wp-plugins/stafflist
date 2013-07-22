@@ -3,7 +3,7 @@
 Plugin Name: StaffList
 Plugin URI: http://URI_Of_Page_Describing_Plugin_and_Updates
 Description: A super simplified staff directory tool
-Version: 0.92
+Version: 0.93
 Author: era404 Creative Group, Inc.
 Author URI: http://www.era404.com
 License: GPLv2 or later.
@@ -237,7 +237,12 @@ class stafflist {
 		wp_register_style('stafflist', plugins_url('stafflist.css', __FILE__) ); wp_enqueue_style('stafflist');
 		
 		//build table
-		echo "<div id='staffdirectory'></div>";
+		echo "<div id='staffwrapper'><div id='pagerblock'>
+		  	<form id='stafflistctl'>
+				<input type='hidden' id='sl_sort' value='l'>
+				<input type='hidden' id='sl_page' value='1'>
+				Search Directory: <input type='test' id='sl_search' value='{$limit['search']}' onkeyup='do_sl_search(this);'>
+		  	</form></div><div id='staffdirectory'></div></div>";
 	}
 }
 /***********************************************************************************
@@ -284,7 +289,7 @@ function ajax_build(){
 	$pg[5]=(($pg[4]+$pg[1])-1);
 	$limit['page'] = $pg;
 	
-	ajax_build_header($limit);
+	$pagerblock = ajax_build_header($limit);
 	
 	//build query
 	$q =   "SELECT * FROM {$staffdb} {$where} ORDER BY {$sort} LIMIT {$pg[4]},{$pg[5]}"; //echo $q;
@@ -304,7 +309,7 @@ function ajax_build(){
 						 $s['sl_email']).
 				 "</td><td>{$s['sl_phone']}</td></tr>";
 		}
-	die("</table>");
+	die("</table>{$pagerblock}");
 }
 
 function setup_stafflist_scripts(){
@@ -316,17 +321,14 @@ add_action('wp_ajax_ajax_build', 'ajax_build');
 add_action('wp_ajax_nopriv_ajax_build', 'ajax_build');
 
 function ajax_build_header($limit) {
+
 	echo "<table id='stafflists'>";
-	echo "<div id='pagerblock'>
-		  	<div style='float:right;'><form id='stafflistctl'>
-				<input type='hidden' id='sl_sort' value='l'>
-				<input type='hidden' id='sl_page' value='1'>
-				Search Directory: <input type='test' id='sl_search' value='{$limit['search']}' onkeyup='do_sl_search(this);'>
-		  	</form></div>
-		Page: {$limit['page'][3]} (".($limit['page'][4]+1)." - ".($limit['page'][0]<($limit['page'][5]+1)?$limit['page'][0]:($limit['page'][5]+1))." of {$limit['page'][0]}) ";
-		for($page=1;$page<=$limit['page'][2];$page++){ echo "<p class='pager'><a href='javascript:sl_page({$page});' id='sl_page:{$page}'>{$page}</a></p>"; }
-	echo "</div>";
-	echo "";
+	$pagerblock = "<div class='pageNum'>Page: {$limit['page'][3]} (".($limit['page'][4]+1)." - ".($limit['page'][0]<($limit['page'][5]+1)?$limit['page'][0]:($limit['page'][5]+1))." of {$limit['page'][0]})</div>";
+					for($page=1;$page<=$limit['page'][2];$page++){ 
+						$pagerblock.= "<p class='pager ".($page==$limit['page'][3]?"current":"")."'><a href='javascript:sl_page({$page});' id='sl_page:{$page}'>{$page}</a></p>"; 
+					}
+					$pagerblock.= "</div>";
+	echo "$pagerblock";
 	echo "<thead id='stafflisthead'><tr>
 			<th>&nbsp;</th>
 			<th><a href='javascript:sl_sort(\"l\");' title='Sort by Last Name A-Z' class='sort_a ".($limit['sort'] == "" || $limit['sort'] == "l" ? "selected" : "")."' id='sl_sort:l'><span>Ascending</span></a> Last Name
@@ -340,7 +342,7 @@ function ajax_build_header($limit) {
 			</th>
 			<th>Email Address</th><th>Phone / Ext</th>
 		</tr></thead>";
-	return;
+	return($pagerblock);
 }
 
 
