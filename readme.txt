@@ -48,6 +48,13 @@ If you wish. Sure.
 
 == Changelog ==
 
+= 0.95 =
+* Adjusted pager to allow for user config of # records/page.
+* define('RECORDS_PER_PAGE', 25); //stafflist.php
+
+= 0.94 =
+* Improved styles.
+
 = 0.93 =
 * Improved styles.
 

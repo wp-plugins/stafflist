@@ -3,7 +3,7 @@
 Plugin Name: StaffList
 Plugin URI: http://URI_Of_Page_Describing_Plugin_and_Updates
 Description: A super simplified staff directory tool
-Version: 0.93
+Version: 0.95
 Author: era404 Creative Group, Inc.
 Author URI: http://www.era404.com
 License: GPLv2 or later.
@@ -118,7 +118,7 @@ function stafflist_plugin_options() {
 	$pg[5]=(($pg[4]+$pg[1])-1);
 		
 	//build query
-	$q =   "SELECT * FROM {$staffdb} ORDER BY {$sort} LIMIT {$pg[4]},{$pg[5]}"; //echo $q;
+	$q =   "SELECT * FROM {$staffdb} ORDER BY {$sort} LIMIT {$pg[4]}, {$pg[1]}"; //echo $q;
 	$staff = $wpdb->get_results($q, ARRAY_A);
 	//myprint_r($staff);
 	
@@ -288,11 +288,11 @@ function ajax_build(){
 	$pg[4] = ($pg[1]*$pg[3])-$pg[1];
 	$pg[5]=(($pg[4]+$pg[1])-1);
 	$limit['page'] = $pg;
-	
+	//myprint_r($pg);
 	$pagerblock = ajax_build_header($limit);
 	
 	//build query
-	$q =   "SELECT * FROM {$staffdb} {$where} ORDER BY {$sort} LIMIT {$pg[4]},{$pg[5]}"; //echo $q;
+	$q =   "SELECT * FROM {$staffdb} {$where} ORDER BY {$sort} LIMIT {$pg[4]}, {$pg[1]}"; //echo $q;
 
 	$staff = $wpdb->get_results($q, ARRAY_A);
 	foreach($staff as $i=>$s) {

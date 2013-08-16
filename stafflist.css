@@ -1,12 +1,21 @@
-body {
-	/* background-color:gold; */
-}
 #staffwrapper {
+	font-family: "Lucida Grande", Arial, sans-serif;
+	font-size: 13px;
 	position: relative;
 	width: 858px;
 }
+#staffwrapper #pagerblock {
+	position: absolute;
+	right: 0;
+	margin: 4px 10px 0 0;
+}
+
+#staffwrapper #sl_search {
+	outline: none;
+}
 
 #staffdirectory {
+	font-family: "Lucida Grande", Arial, sans-serif;
 	overflow:auto;
 	padding:8px;
 	background-color: #FBFBFB;
@@ -17,111 +26,81 @@ body {
 	-moz-box-shadow: 	0 0 8px rgba(0,0,0, .05);
 	box-shadow: 		0 0 8px rgba(0,0,0, .05);
 }
-*{
-	margin:0;
-	padding:0;
-	font-family: "Lucida Grande", Arial, sans-serif;
+#staffdirectory #stafflists {
+	margin: 5px 0;
 }
-#stafflists {
-	margin-bottom: 10px;
-}
-#stafflists tr {
+#staffdirectory #stafflists tr {
 	border: 1px solid #FFF;
 	border-bottom: 1px solid #f0f0f0;
 }
-#stafflists td {
+#staffdirectory #stafflists td {
 	font-size: 12px;
 	color: #555;
 	border: 0;
+	vertical-align: middle;
 }
-#stafflists p {
+#staffdirectory #stafflists p {
 	overflow:hidden;
 	margin: 5px 0;
 	float:left;
 	font-weight:bold;
 	clear: left;
-	height
 }
-#stafflists a {
+#staffdirectory #stafflists a {
 	color: #555;
 }
-#stafflists tbody a:hover, #stafflists strong {
+#staffdirectory #stafflists tbody a:hover, #stafflists strong {
 	color: #B74327;
 	text-decoration: none;
 	border-bottom: 1px #B74327 dotted;
 }
-#stafflists {
+#staffdirectory #stafflists {
 	border-collapse: collapse;
 	border-spacing: 0;
 	width: 100%;
 }
-#stafflists tr.info td {
-	padding: 5px;
-	font-size: 11px;
-}
-
-tr:nth-child(2n+1){
+#staffdirectory tr:nth-child(2n+1){
   background-color: #f0f0f0;
 }
-
-#stafflisthead tr, #stafflisthead tr th {
+#staffdirectory #stafflisthead tr, #stafflisthead tr th {
 	height: 30px;
 	background-color: #cfcfcf;
 	font-weight: bold;
 	padding:0;
 	font-size: 12px;
+	vertical-align: middle;
 }
-#stafflisthead tr th {
-	padding-left: 5px;
+#staffdirectory #stafflisthead tr th {
+	text-align:left;
 }
-.sort_a, .sort_d {
+#staffdirectory .sort_a, #staffdirectory .sort_d {
 	width: 9px;
 	height: 9px;
 	display: inline-block;
 	margin: 0 2px;
 }
-.sort_a span, .sort_d span {
+#staffdirectory .sort_a span, #staffdirectory .sort_d span {
 	display: none;
 }
-.sort_a {
+#staffdirectory .sort_a {
 	background-position: 9px 0;
 }
-.sort_d {
+#staffdirectory .sort_d {
 	background-position: 9px 9px;
 }
-.sort_a.selected {
+#staffdirectory .sort_a.selected {
 	background-position: 0 0;
 }
-.sort_d.selected {
+#staffdirectory .sort_d.selected {
 	background-position: 0 9px;
 }
-	.sort_a:hover {
+#staffdirectory .sort_a:hover {
 	background-position: 18px 0;
 }
-.sort_d:hover {
+#staffdirectory .sort_d:hover {
 	background-position: 18px 9px;
 }
-.thumb {
-	height:45px;
-	width:60px;
-	overflow:hidden;
-	margin-right:10px;
-}
-#status {
-	width:50%;
-	padding:10px;
-	outline:none;
-	height:36px;
-}
-#pagerblock {
-	position: absolute;
-	right: 0;
-	margin: 10px 10px 0 0;
-}
-#sl_search {
-	outline: none;
-}
-.pager {
+#staffdirectory .pager {
 	width:18px;
 	height:14px;
 	background-color:#DDD;
@@ -129,130 +108,43 @@ tr:nth-child(2n+1){
 	text-decoration: none;
 	text-align:center;
 	float:left;
-	margin: 0 2px 0 0;
-	padding:0 0 5px 0;
+	margin: 0 2px 0 1px;
+	padding:0 0 2px 0;
 }
-.pageNum {
+#staffdirectory .pageNum {
 	padding-left: 10px;
 	display: inline-block;
 }
-.pager a {
+#staffdirectory .pager a {
 	text-decoration:none;
 	color: #888;
 	font-weight: normal;
 	padding-right: 2px;
 }
-p.current{
+#staffdirectory p.current {
 	background: #B74327;
 }
-p.current a, p.current a:hover{
+#staffdirectory p.current a, p.current a:hover {
 	color: #FFF;
 }
-p.pager:hover{
+#staffdirectory p.pager:hover {
 	background-color: #888;
 }
-p.pager:hover a{
+#staffdirectory p.pager:hover a {
 	color: #FFF;
 }
-.editbutton {
-	width: auto !important;
-	margin: 0 4px !important;
-	float:right !important;
-	padding: 0 4px;
-	clear: none;
-	height:14px;
-	background-color:#DDD;
-	border:1px solid #AAA;
-	display:block;
-	text-decoration: none;
-	margin: 0 3px;
-}
-.editbutton a {
-	text-decoration:none;
-}
-.editbutton a:hover {
-	font-weight:bold;
-}
-.editmaster {
-	border:1px solid black;
-}
-.copyAcross {
-	margin-top:10px;
-}
-tr.row {
+#staffdirectory tr.row {
 	height: 70px;
 }
-tr.orange, #warning.orange {
-	background: #ffe4db;
-}
-#warning {
-	padding: 10px;
-	margin-bottom: 10px;
-}
-.focusField {
-	padding-left: 20px;
-	width: 200px;
-	border:solid 2px #73A6FF;
-	background:#EFF5FF;
-	color:#000;
-}
-.idleField {
-	padding-left: 20px;
-	width: 200px;
-	background:#EEE;
-	color: #6F6F6F;
-	border: solid 2px #DFDFDF;
-}
-#donate {
-	float:right;
-	width:180px;
-	height:170px;
-	border:1px solid #B74327;
-	margin:10px;
-	padding:20px 10px 10px 10px;
-}
-.sort_a {
+#staffdirectory .sort_a {
 	background-image: url(sort.gif);
 }
-.sort_d {
+#staffdirectory .sort_d {
 	background-image: url(sort.gif);
 }
-.upd {
-	margin:0;
-	padding:0;
-	float:left;
-	width:16px;
-	height:16px;
-}
-.updA {
-	background-image: url(updating.gif);
-	margin:0;
-	padding:0;
-	float:left;
-	width:16px;
-	height:16px;
-}
-.focusField {
-	background: url(edit.png) no-repeat 2px 2px;
-}
-.idleField {
-	background: url(okay.png) no-repeat 2px 2px;
-}
-.updateField {
-	padding-left: 20px;
-	 width: 200px;
-	background: url(updating.gif) no-repeat 2px 2px;
-}
-#doInsert {
-	background: url(copyacross.gif) no-repeat;
-	width:25px;
-	height:25px;
-	margin:4px;
-	padding:12px 13px 12px 12px;
-}
-.contactcard {
+#staffdirectory .contactcard {
 	background: url(contact_card.gif) no-repeat;
 	width:25px;
 	height:25px;
-	margin:4px;
+	margin:4px !important;
 }
