@@ -12,6 +12,10 @@ function build_stafflist() {
  		//console.log(response);
 		jQuery("div#staffdirectory").html(response);
  	});
+	jQuery("#stafflistctl").submit(function(e){
+		e.preventDefault();
+		return false;
+	});
  	return false;
 }
 function sl_sort(dir){

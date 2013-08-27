@@ -3,7 +3,7 @@
 Plugin Name: StaffList
 Plugin URI: http://URI_Of_Page_Describing_Plugin_and_Updates
 Description: A super simplified staff directory tool
-Version: 0.95
+Version: 0.96
 Author: era404 Creative Group, Inc.
 Author URI: http://www.era404.com
 License: GPLv2 or later.
@@ -241,7 +241,7 @@ class stafflist {
 		  	<form id='stafflistctl'>
 				<input type='hidden' id='sl_sort' value='l'>
 				<input type='hidden' id='sl_page' value='1'>
-				Search Directory: <input type='test' id='sl_search' value='{$limit['search']}' onkeyup='do_sl_search(this);'>
+				Search Directory: <input type='text' id='sl_search' value='{$limit['search']}' onkeyup='do_sl_search(this);'>
 		  	</form></div><div id='staffdirectory'></div></div>";
 	}
 }
