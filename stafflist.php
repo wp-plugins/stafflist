@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: StaffList
-Plugin URI: http://URI_Of_Page_Describing_Plugin_and_Updates
+Plugin URI: http://wordpress.org/plugins/stafflist/
 Description: A super simplified staff directory tool
-Version: 0.96
+Version: 0.97
 Author: era404 Creative Group, Inc.
 Author URI: http://www.era404.com
 License: GPLv2 or later.
@@ -391,6 +391,6 @@ function deleteEmpty() {
 								    AND ( sl_email='' OR sl_email IS NULL )";
 	$wpdb->query($dq);
 }
-function myprint_r($arr) { echo "<pre>"; print_r($arr); echo "</pre>"; return; }
 
+if(!function_exists("myprint_r")){	function myprint_r($in) { echo "<pre>"; print_r($in); echo "</pre>"; return; }}
 ?>

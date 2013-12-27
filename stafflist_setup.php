@@ -20,7 +20,7 @@ function stafflist_install () {
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 	dbDelta( $sql );
 	
-	echo "FOR UPDATE: $forUpdate";
+	//echo "FOR UPDATE: $forUpdate";
 	
 	//insert sample data if none
 	$count =  $wpdb->get_var("SELECT count(id) from $table_name");
