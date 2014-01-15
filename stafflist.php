@@ -241,7 +241,7 @@ class stafflist {
 		  	<form id='stafflistctl'>
 				<input type='hidden' id='sl_sort' value='l'>
 				<input type='hidden' id='sl_page' value='1'>
-				Search Directory: <input type='text' id='sl_search' value='{$limit['search']}' onkeyup='do_sl_search(this);'>
+				<input type='text' id='sl_search' value='{$limit['search']}' onkeyup='do_sl_search(this);' placeholder='Search Directory'>
 		  	</form></div><div id='staffdirectory'></div></div>";
 	}
 }
@@ -313,7 +313,7 @@ function ajax_build(){
 }
 
 function setup_stafflist_scripts(){
-	wp_enqueue_script( "stafflistscripts", plugin_dir_url( __FILE__ ) . '/stafflist.js', array( 'jquery' ) );
+	wp_enqueue_script( "stafflistscripts", plugin_dir_url( __FILE__ ) . 'stafflist.js', array( 'jquery' ) );
 }
 
 add_action('wp_print_scripts', 'setup_stafflist_scripts');

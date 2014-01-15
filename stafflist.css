@@ -2,12 +2,12 @@
 	font-family: "Lucida Grande", Arial, sans-serif;
 	font-size: 13px;
 	position: relative;
-	width: 858px;
+	width: 100%;
 }
 #staffwrapper #pagerblock {
 	position: absolute;
 	right: 0;
-	margin: 4px 10px 0 0;
+	margin: 5px 10px 0 0;
 }
 
 #staffwrapper #sl_search {
@@ -110,9 +110,11 @@
 	float:left;
 	margin: 0 2px 0 1px;
 	padding:0 0 2px 0;
+	min-height: 20px;
 }
 #staffdirectory .pageNum {
 	padding-left: 10px;
+	line-height: 20px;
 	display: inline-block;
 }
 #staffdirectory .pager a {
