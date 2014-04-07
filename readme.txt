@@ -47,6 +47,9 @@ Yes. We plan to add a feature to use infinite scroll instead of page numbers.
 If you wish. Sure.
 
 == Changelog ==
+= 1.0 =
+* StaffList now in official release.
+
 = 0.96 =
 * Fixed issue with users pressing enter on a realtime search.
 

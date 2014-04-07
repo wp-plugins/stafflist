@@ -3,11 +3,11 @@
 Plugin Name: StaffList
 Plugin URI: http://wordpress.org/plugins/stafflist/
 Description: A super simplified staff directory tool
-Version: 0.97
+Version: 1.0
 Author: era404 Creative Group, Inc.
 Author URI: http://www.era404.com
 License: GPLv2 or later.
-Copyright 2013  era404 Creative Group, Inc.  (email : in4m@era404.com)
+Copyright 2014  era404 Creative Group, Inc.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as 
@@ -35,7 +35,7 @@ register_activation_hook( __FILE__, 'stafflist_install' );
 *     Globals
 ***********************************************************************************/
 define('RECORDS_PER_PAGE', 25);
-define('STAFFLIST_URL', admin_url() . 'options-general.php?page=stafflist');
+define('STAFFLIST_URL', admin_url() . 'admin.php?page=stafflist');
 $staffdb = $wpdb->prefix . "stafflist";
 
 /***********************************************************************************
@@ -44,7 +44,6 @@ $staffdb = $wpdb->prefix . "stafflist";
 add_action( 'admin_menu', 'stafflist_admin_menu' );
 
 function stafflist_admin_menu() {
-	//$page = add_management_page( 'StaffList', 'StaffList', 'manage_options', 'stafflist', 'stafflist_plugin_options' );
 	$page = add_menu_page('StaffList', 'StaffList', 'manage_options', 'stafflist', 'stafflist_plugin_options', plugins_url('stafflist/admin_icon.png') );
 	add_action( 'admin_print_styles-' . $page, 'stafflist_admin_styles' );
 }
@@ -59,11 +58,12 @@ function stafflist_admin_styles() {
 /***********************************************************************************
 *     Add Required Scripts
 ***********************************************************************************/
+add_action( 'admin_enqueue_scripts', 'setup_staff_admin_scripts' );
 function setup_staff_admin_scripts() {
 	wp_enqueue_script( 'ajax-script', plugins_url('/stafflist_admin.js', __FILE__), array('jquery'), 1.0 ); 	// jQuery will be included automatically
 	wp_localize_script( 'ajax-script', 'ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) ); 	// setting ajaxurl
 }
-add_action('wp_print_scripts', 'setup_staff_admin_scripts');
+
 add_action( 'wp_ajax_ajax_update', 'ajax_update' ); 	//for updates
 add_action( 'wp_ajax_ajax_insert', 'ajax_insert' ); 	//for updates
 add_action( 'wp_ajax_ajax_nextrow', 'ajax_nextrow' ); 	//for updates
@@ -119,8 +119,7 @@ function stafflist_plugin_options() {
 		
 	//build query
 	$q =   "SELECT * FROM {$staffdb} ORDER BY {$sort} LIMIT {$pg[4]}, {$pg[1]}"; //echo $q;
-	$staff = $wpdb->get_results($q, ARRAY_A);
-	//myprint_r($staff);
+	$staff = $wpdb->get_results($q, ARRAY_A);									 //myprint_r($staff);
 	
 	//build images table
 	?>
@@ -158,11 +157,11 @@ echo <<<EOINSERT
 			<th>&nbsp;</th><th>Email Address</th><th>&nbsp;</th><th>Phone / Ext</th><th>&nbsp;</th>
 		</tr></thead>	
 		<tr class='row'>
-		<td><input type='text' id='sl_last:0'  name='sl_last'  value=' '  tabindex=1 /></td><td></td>
-		<td><input type='text' id='sl_first:0' name='sl_first' value=' '  tabindex=2 /></td><td></td>
-		<td><input type='text' id='sl_dept:0'  name='sl_dept'  value=' '  tabindex=3 /></td><td></td>
-		<td><input type='text' id='sl_email:0' name='sl_email' value=' '  tabindex=4 /></td><td></td>
-		<td><input type='text' id='sl_phone:0' name='sl_phone' value=' '  tabindex=5 /></td>
+		<td><input type='text' id='sl_last:0'  name='sl_last'  value=''  tabindex=1 /></td><td></td>
+		<td><input type='text' id='sl_first:0' name='sl_first' value=''  tabindex=2 /></td><td></td>
+		<td><input type='text' id='sl_dept:0'  name='sl_dept'  value=''  tabindex=3 /></td><td></td>
+		<td><input type='text' id='sl_email:0' name='sl_email' value=''  tabindex=4 /></td><td></td>
+		<td><input type='text' id='sl_phone:0' name='sl_phone' value=''  tabindex=5 /></td>
 		<td><input type='image' id='doInsert' tabindex=6 name='doInsert' value='' onclick='javascript:void(0); return false;' /></td>
 	</tr>
 </table>
@@ -197,7 +196,7 @@ EOINSERT;
 	foreach($staff as $k=>$s){
 		$rm = plugins_url('/delete.png', __FILE__);
 		$ed = plugins_url('/edit.png', __FILE__);
-		$del = "<a href='" . STAFFLIST_URL . "&remove={$s['id']}&p={$page}&s={$_GET['s']}' class='remove'
+		$del = "<a href='" . STAFFLIST_URL . "&remove={$s['id']}&p={$p}&s={$_GET['s']}' class='remove'
 				   onclick='javascript:if(!confirm(\"Are you sure you want to delete this staff record?\")) return false;' 
 				   title='Permanently Delete This Staff Record' target='_self' 
 				/><img src='{$rm}' width='16' height='16' align='absmiddle' /></a>&nbsp;";
@@ -235,6 +234,7 @@ class stafflist {
 	function stafflist() {
 		//include styles
 		wp_register_style('stafflist', plugins_url('stafflist.css', __FILE__) ); wp_enqueue_style('stafflist');
+		if(!isset($limit)) $limit = array("search"=>"");
 		
 		//build table
 		echo "<div id='staffwrapper'><div id='pagerblock'>
@@ -312,11 +312,12 @@ function ajax_build(){
 	die("</table>{$pagerblock}");
 }
 
-function setup_stafflist_scripts(){
-	wp_enqueue_script( "stafflistscripts", plugin_dir_url( __FILE__ ) . 'stafflist.js', array( 'jquery' ) );
+add_action( 'wp_enqueue_scripts', 'setup_staff_scripts' );
+function setup_staff_scripts() {
+	wp_enqueue_script( 'ajax-script', plugins_url('/stafflist.js', __FILE__), array('jquery'), 1.0 ); 	// jQuery will be included automatically
+	wp_localize_script( 'ajax-script', 'ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) ); 	// setting ajaxurl
 }
 
-add_action('wp_print_scripts', 'setup_stafflist_scripts');
 add_action('wp_ajax_ajax_build', 'ajax_build');
 add_action('wp_ajax_nopriv_ajax_build', 'ajax_build');
 
@@ -354,9 +355,8 @@ function ajax_update() {
 
 	//build query from passed vars
 	$fval = $_POST['fval'];
-	$fname = $_POST['fname'];
-	$q = "UPDATE $staffdb SET {$fname[0]} = '{$fval}' WHERE id = {$fname[1]}";
-	//print_r($_POST); echo "Query: $q";
+	$fname = $_POST['fname'];														//print_r($_POST); 
+	$q = "UPDATE $staffdb SET {$fname[0]} = '{$fval}' WHERE id = {$fname[1]}";		//echo "Query: $q";
 
 	$wpdb->query($q);
 	die(); // stop executing script
@@ -364,14 +364,14 @@ function ajax_update() {
 function ajax_insert() {
 	global $wpdb,$staffdb;
 	parse_str($_POST['data']);
-	parse_str($rec);
+
 	if(trim($sl_first)=="" && trim($sl_last)=="" && trim($sl_dept)=="") die(-1);
 	
-	$wpdb->insert( $staffdb, array( 'sl_first' => $wpdb->escape($sl_first),
-									'sl_last'  => $wpdb->escape($sl_last),
-									'sl_phone' => $wpdb->escape($sl_phone),
-									'sl_email' => $wpdb->escape($sl_email),
-									'sl_dept'  => $wpdb->escape($sl_dept)
+	$wpdb->insert( $staffdb, array( 'sl_first' => (string) addslashes(trim($sl_first)),
+									'sl_last'  => (string) addslashes(trim($sl_last)),
+									'sl_phone' => (string) addslashes(trim($sl_phone)),
+									'sl_email' => (string) addslashes(trim($sl_email)),
+									'sl_dept'  => (string) addslashes(trim($sl_dept))
 	));
 	die("1"); // stop executing script
 }
