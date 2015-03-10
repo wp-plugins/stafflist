@@ -47,6 +47,9 @@ Yes. We plan to add a feature to use infinite scroll instead of page numbers.
 If you wish. Sure.
 
 == Changelog ==
+= 1.0.1 =
+* Added new plugin icons.
+
 = 1.0 =
 * StaffList now in official release.
 
