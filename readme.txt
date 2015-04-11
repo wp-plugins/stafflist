@@ -1,5 +1,6 @@
 === StaffList ===
 Contributors: ERA404
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=464DEX6U6DL5N
 Requires at least: 3.2.1
 Tested up to: 4.1.1
 Stable tag: trunk
@@ -47,6 +48,9 @@ Yes. We plan to add a feature to use infinite scroll instead of page numbers.
 If you wish. Sure.
 
 == Changelog ==
+= 1.0.2 =
+* Added donate link ;)
+
 = 1.0.1 =
 * Added new plugin icons.
 
