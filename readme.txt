@@ -1,8 +1,8 @@
 === StaffList ===
-Contributors: ERA404
+Contributors: era404
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=464DEX6U6DL5N
 Requires at least: 3.2.1
-Tested up to: 4.1.1
+Tested up to: 4.2.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -48,6 +48,9 @@ Yes. We plan to add a feature to use infinite scroll instead of page numbers.
 If you wish. Sure.
 
 == Changelog ==
+= 1.0.3
+* Testified/Verified Compatibility with WordPress 4.2.2
+
 = 1.0.2 =
 * Added donate link ;)
 

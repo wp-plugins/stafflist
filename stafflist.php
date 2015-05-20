@@ -3,8 +3,8 @@
 Plugin Name: StaffList
 Plugin URI: http://wordpress.org/plugins/stafflist/
 Description: A super simplified staff directory tool
-Version: 1.0.2
-Author: ERA404
+Version: 1.0.3
+Author: era404
 Author URI: http://www.era404.com
 License: GPLv2 or later.
 Copyright 2014 ERA404 Creative Group, Inc.
