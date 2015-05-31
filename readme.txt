@@ -48,10 +48,10 @@ Yes. We plan to add a feature to use infinite scroll instead of page numbers.
 If you wish. Sure.
 
 == Changelog ==
-= 1.0.4
+= 1.0.4 =
 * Update to fix interference with paging styles from some themes.
 
-= 1.0.3
+= 1.0.3 =
 * Testified/Verified Compatibility with WordPress 4.2.2
 
 = 1.0.2 =
