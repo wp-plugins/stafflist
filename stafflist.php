@@ -3,7 +3,7 @@
 Plugin Name: StaffList
 Plugin URI: http://wordpress.org/plugins/stafflist/
 Description: A super simplified staff directory tool
-Version: 1.0.3
+Version: 1.0.4
 Author: era404
 Author URI: http://www.era404.com
 License: GPLv2 or later.
@@ -237,12 +237,7 @@ class stafflist {
 		if(!isset($limit)) $limit = array("search"=>"");
 		
 		//build table
-		echo "<div id='staffwrapper'><div id='pagerblock'>
-		  	<form id='stafflistctl'>
-				<input type='hidden' id='sl_sort' value='l'>
-				<input type='hidden' id='sl_page' value='1'>
-				<input type='text' id='sl_search' value='{$limit['search']}' onkeyup='do_sl_search(this);' placeholder='Search Directory'>
-		  	</form></div><div id='staffdirectory'></div></div>";
+		echo "<div id='staffwrapper'><div id='pagerblock'><form id='stafflistctl'><input type='hidden' id='sl_sort' value='l'><input type='hidden' id='sl_page' value='1'><input type='text' id='sl_search' value='{$limit['search']}' onkeyup='do_sl_search(this);' placeholder='Search Directory'></form></div><div id='staffdirectory'></div></div>";
 	}
 }
 /***********************************************************************************
@@ -324,11 +319,11 @@ add_action('wp_ajax_nopriv_ajax_build', 'ajax_build');
 function ajax_build_header($limit) {
 
 	echo "<table id='stafflists'>";
-	$pagerblock = "<div class='pageNum'>Page: {$limit['page'][3]} (".($limit['page'][4]+1)." - ".($limit['page'][0]<($limit['page'][5]+1)?$limit['page'][0]:($limit['page'][5]+1))." of {$limit['page'][0]})</div>";
+	$pagerblock = "";
 					for($page=1;$page<=$limit['page'][2];$page++){ 
 						$pagerblock.= "<p class='pager ".($page==$limit['page'][3]?"current":"")."'><a href='javascript:sl_page({$page});' id='sl_page:{$page}'>{$page}</a></p>"; 
 					}
-					$pagerblock.= "</div>";
+					$pagerblock.= "<div class='pageNum'>Page: {$limit['page'][3]} (".($limit['page'][4]+1)." - ".($limit['page'][0]<($limit['page'][5]+1)?$limit['page'][0]:($limit['page'][5]+1))." of {$limit['page'][0]})</div></div>";
 	echo "$pagerblock";
 	echo "<thead id='stafflisthead'><tr>
 			<th>&nbsp;</th>
